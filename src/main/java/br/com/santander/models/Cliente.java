@@ -11,11 +11,10 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    @Column(nullable = false, unique = true, length = 30)
+    @Column(unique = true)
     private String nome;
-    @Column(nullable = false, unique = true, length = 11)
+    @Column(unique = true)
     private String cpf;
-
     @Embedded
     private Conta conta;
 
@@ -41,6 +40,14 @@ public class Cliente {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Conta getConta() {
+        return conta;
+    }
+
+    public void setConta(Conta conta) {
+        this.conta = conta;
     }
 }
 
