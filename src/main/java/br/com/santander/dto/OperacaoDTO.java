@@ -1,10 +1,12 @@
 package br.com.santander.dto;
 
 import br.com.santander.models.TipoOperacao;
+import java.util.UUID;
 
 public class OperacaoDTO {
     private String descricao;
     private Double valor;
+    private UUID idConta;
     private TipoOperacao tipo_operacao;
 
     public String getDescricao() {
@@ -21,6 +23,14 @@ public class OperacaoDTO {
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public UUID getIdConta() {
+        return idConta;
+    }
+
+    public void setIdConta(UUID idConta) {
+        this.idConta = idConta;
     }
 
     public TipoOperacao getTipo_operacao() {

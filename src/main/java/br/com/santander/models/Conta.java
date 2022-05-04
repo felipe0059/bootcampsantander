@@ -8,9 +8,9 @@ public class Conta {
 
     private static final long serialVersionUID = 1L;
 
-    @Column(nullable = false, unique = true, length = 10)
+    @Column
     private Long numero;
-    @Column(nullable = false, unique = true, length = 7)
+    @Column
     private Double saldo;
 
     public Long getNumero() {

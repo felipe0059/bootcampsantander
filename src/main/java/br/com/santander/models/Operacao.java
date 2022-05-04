@@ -12,12 +12,14 @@ public class Operacao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    @Column(nullable = false)
+    @Column
     private LocalDateTime dataHora;
-    @Column(nullable = false, unique = true, length = 7)
+    @Column
     private String descricao;
-    @Column(nullable = false, length = 70)
+    @Column
     private Double valor;
+    @Column
+    private UUID idConta;
     @Enumerated(EnumType.STRING)
     private TipoOperacao tipo_operacao;
 
@@ -55,6 +57,14 @@ public class Operacao {
 
     public TipoOperacao getTipo_operacao() {
         return tipo_operacao;
+    }
+
+    public UUID getIdConta() {
+        return idConta;
+    }
+
+    public void setIdConta(UUID idConta) {
+        this.idConta = idConta;
     }
 
     public void setTipo_operacao(TipoOperacao tipo_operacao) {

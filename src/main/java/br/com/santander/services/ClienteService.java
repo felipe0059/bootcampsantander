@@ -6,7 +6,6 @@ import br.com.santander.models.Conta;
 import br.com.santander.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Date;
 
 @Service
@@ -17,8 +16,8 @@ public class ClienteService {
 
     public void save(ClienteDTO clienteDTO) {
         Cliente cliente = new Cliente();
-        cliente.setNome(cliente.getNome());
-        cliente.setCpf(cliente.getCpf());
+        cliente.setNome(clienteDTO.getNome());
+        cliente.setCpf(clienteDTO.getCpf());
     //criando uma conta automática para cada cliente gerado;
         Conta conta = new Conta();
         conta.setSaldo(0.0); //saldo inicial;

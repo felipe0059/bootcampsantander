@@ -1,6 +1,7 @@
 package br.com.santander.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Entity
@@ -11,9 +12,9 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    @Column(unique = true)
+    @Column @NotNull
     private String nome;
-    @Column(unique = true)
+    @Column @NotNull
     private String cpf;
     @Embedded
     private Conta conta;

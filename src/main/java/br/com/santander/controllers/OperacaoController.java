@@ -11,6 +11,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/operacoes")
 public class OperacaoController {
@@ -22,9 +25,8 @@ public class OperacaoController {
     OperacaoService service;
 
     @GetMapping
-    public Page<Operacao> findAll (@PageableDefault(page = 0, size = 10, sort = "descricao", direction = Sort.Direction.ASC)
-    Pageable pageable) {
-        return repository.findAll(pageable);
+    public List<Operacao> findAll(@PathVariable("IdConta") UUID IdConta){
+        return repository.findByIdConta(IdConta);
     }
 
     @PostMapping
