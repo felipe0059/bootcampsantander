@@ -6,7 +6,6 @@ import br.com.santander.repositories.ClienteRepository;
 import br.com.santander.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -24,10 +23,27 @@ public class ClienteController {
         return repository.findAll();
     }
 
+    @GetMapping(value = "/{cpf}")
+    public Cliente getUser(@PathVariable String cpf) {
+        return service.findByCpf(cpf);
+    }
+
     @PostMapping
     public void save(@RequestBody ClienteDTO cliente) {
         service.save(cliente);
     }
+
+    @PutMapping
+    public Cliente update(@RequestBody Cliente cliente, @PathVariable String cpf) {
+        return service.update(cliente, cpf);
+    }
+
+    @DeleteMapping("/{cpf}")
+    public void deleteByCpf(@RequestBody String cpf) {
+        service.delete(cpf);
+
+    }
+
 
 
 

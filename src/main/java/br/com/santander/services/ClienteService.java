@@ -5,8 +5,12 @@ import br.com.santander.models.Cliente;
 import br.com.santander.models.Conta;
 import br.com.santander.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.util.Date;
+import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -25,5 +29,18 @@ public class ClienteService {
         cliente.setConta(conta);
         repository.save(cliente);
     }
+    //talvez seja a classe dto como parametro
+    public Cliente update(Cliente cliente, String cpf) {
+        cliente.setCpf(cpf);
+        return repository.save(cliente);
+    }
 
+    public Cliente findByCpf(String cpf) {
+        Optional<Cliente> obj = repository.findByCpf(cpf);
+        return obj.get();
+    }
+
+    public void delete(String cpf) {
+        repository.deleteByCpf(cpf);
+    }
 }
